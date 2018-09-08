@@ -1,0 +1,110 @@
+﻿@model Company.Models.Models.CompwiseDepts
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_OurLayout.cshtml";
+}
+
+<div class="col-md-offset-3">
+    <h2>Company Details</h2>
+</div>
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.companyTBL.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyTBL.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyTBL.CityCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyTBL.CityCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyTBL.CompanyId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyTBL.CompanyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyTBL.CountryCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyTBL.CountryCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyTBL.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyTBL.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.companyTBL.StateCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyTBL.StateCode)
+        </dd>
+    </dl>
+</div>
+
+@{
+    var s = "/Dept/Create?id=" + Model.companyTBL.id;
+}
+<div class="col-md-offset-2">
+    <input type="button" class="btn btn-success" value="Add New Department" onclick="location.href='@s'" />
+</div>
+
+@*<table id="list" class="table table-striped table-bordered display dept" width="100%">
+        <thead>
+            <tr>
+                <th>
+                    Department Name
+                </th>
+                <th>
+                    Department Description
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+            <tr id="filterrow">
+                <th>
+                    Department Name
+                </th>
+                <th>
+                    Department Description
+                </th>
+                <th>T</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model.depts)
+            {
+                <tr>
+                    <td>@r.deptName  </td>
+                    <td>@r.deptDesc  </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Dept", new { id = r.id }, null) |
+                        @Html.ActionLink("Details", "Details", "Dept", new { id = r.id }, null) |
+                        @Html.ActionLink("Delete", "Delete", "Dept", new { id = r.id }, null)
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>*@

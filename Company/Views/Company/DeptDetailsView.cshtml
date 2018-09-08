@@ -1,0 +1,141 @@
+﻿@model Company.Models.Models.CompwiseDepts
+@{
+    var ss = "/Dept/Create?id=" + Model.companyTBL.id;
+}
+
+<div id="content">
+
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-5 col-md-5 col-lg-8">
+        </div>
+    </div>
+
+    <section id="widget-grid" class="">
+        <div class="row">
+            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-1" data-widget-editbutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>Departments </h2>
+                    </header>
+                    <div class="col-sm-1" style="padding-bottom:20px;">
+                        <input type="button" class="btn btn-success" value="Add New Department" onclick="location.href='@ss'" />
+                    </div>
+
+                    <div>
+
+                        <div class="table-responsive">
+                            <div id="divlist">
+                                <table id="list" class="table table-striped table-bordered display dept" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Department Name
+                                            </th>
+                                            <th>
+                                                Department Description
+                                            </th>
+                                            <th>
+                                                Action
+                                            </th>
+                                        </tr>
+                                        <tr id="filterrow">
+                                            <th>
+                                                Department Name
+                                            </th>
+                                            <th>
+                                                Department Description
+                                            </th>
+                                            <th>T</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var r in Model.depts)
+                                        {
+                                            <tr>
+                                                <td>@r.deptName  </td>
+                                                <td>@r.deptDesc  </td>
+
+                                                @{
+                                                    var s = "/Dept/Edit?id=" + @r.id;
+                                                    var s1 = "/Dept/Delete?id=" + @r.id;
+                                                    var s2 = "/Dept/Details?id=" + @r.id;
+
+                                                }
+
+                                                <td width="70px;">
+                                                    <div class="btn-group">
+                                                        <a data-original-title="Edit" href='@s' title="">
+                                                            <i class="fa fa-pencil-square-o"></i>
+                                                        </a>
+                                                    </div>
+                                                    &nbsp;
+                                                    <div class="btn-group">
+                                                        <a data-original-title="Delete" href='@s1' title="Delete"><i class="fa fa-trash-o"></i></a>
+                                                    </div>
+                                                    &nbsp;
+                                                    <div class="btn-group">
+                                                        <a data-original-title="View" onclick='loadEmps("@r.id")' title="View"><i class="fa fa-eye"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+<script>
+    $(document).ready(function () {
+
+        $('#list.dept thead tr#filterrow th').each(function (i) {
+            var title = $('#list.dept thead  tr#filterrow th').eq($(this).index()).text();
+
+            if (title != "T") {
+                $(this).html('<input type="text" />');
+
+                $('input', this).on('keyup change', function () {
+                    if (table2.column(i).search() !== this.value) {
+                        table2
+                            .column(i)
+                            .search(this.value)
+                            .draw();
+                    }
+                });
+            } else {
+                $(this).html('');
+            }
+        });
+
+        if (!table2) {
+            var table2 = $('#list.dept').DataTable({
+                orderCellsTop: true,
+
+                "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "All"]],
+                "pagingType": "full_numbers",
+                "scrollX": true,
+                "columnDefs": [{
+                    "targets": [2],
+                    "orderable": false
+                }]
+            });
+        }
+
+    });
+
+                                    ////function stopPropagation1(evt) {
+
+                                    ////    if (evt.stopPropagation !== undefined) {
+                                    ////        evt.stopPropagation();
+                                    ////    } else {
+                                    ////        evt.cancelBubble = true;
+                                    ////    }
+                                    ////}
+</script>

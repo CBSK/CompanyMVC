@@ -1,0 +1,44 @@
+﻿@model Company.Models.Models.DeptTBL
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_OurLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DeptTBL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+                @Html.DisplayNameFor(model => model.compId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.compId)
+            </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deptDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deptDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.deptName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.deptName)
+        </dd>
+    </dl>
+</div>
+<p>
+
+    <div class="col-md-offset-2">
+        <input type="button" class="btn btn-danger" value="Cancel" onclick="location.href='@Url.Action("Index", "Company")'" />
+    </div>
+</p>

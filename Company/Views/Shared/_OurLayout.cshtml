@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <title> Company Details </title>
+    @*<meta http-equiv="refresh" content="6; url=/Login/Index">*@
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    @*<meta http-equiv="refresh" content="1; url=/Login/Index">*@
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+    @Styles.Render("~/LayoutStyles")
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="/js/libs/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+
+    <header id="header">
+        <div id="logo-group">
+
+            <!-- AJAX-DROPDOWN : control this dropdown height, look and feel from the LESS variable file -->
+            <div class="ajax-dropdown">
+                <!-- notification content -->
+                <div class="ajax-notifications custom-scroll">
+                </div>
+            </div>
+            <!-- END AJAX-DROPDOWN -->
+        </div>
+
+        <!-- #PROJECTS: projects dropdown -->
+        <div class="project-context hidden-xs">
+        </div>
+        <!-- end projects dropdown -->
+        <!-- #TOGGLE LAYOUT BUTTONS -->
+        <!-- pulled right: nav area -->
+        <div class="pull-right">
+
+            <!-- logout button -->
+            <!-- end logout button -->
+            <!-- search mobile button (this is hidden till mobile view port) -->
+            <div id="search-mobile" class="btn-header transparent pull-right">
+                <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+            </div>
+            <!-- end search mobile button -->
+            <!-- #SEARCH -->
+            <!-- fullscreen button -->
+            <div id="fullscreen" class="btn-header transparent pull-right">
+                <span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+            </div>
+            <!-- logout button -->
+            <!-- end fullscreen button -->
+        </div>
+    </header>
+    <!-- END HEADER -->
+    <!-- #NAVIGATION -->
+    <!-- Left panel : Navigation area -->
+    <!-- Note: This width of the aside area can be adjusted through LESS variables -->
+    <aside id="left-panel">
+
+        <nav>
+
+            -->
+
+            <ul>
+                <li>
+                    <a href="~/Company/Create" title="Dashboard"><i class="fa fa-lg fa-fw fa-bank"></i> <span class="menu-item-parent">New Company</span></a>
+                </li>
+            </ul>
+        </nav>
+
+        @*<span class="minifyme" data-action="minifyMenu" style="">
+                <i class="fa fa-arrow-circle-left hit"></i>
+            </span>*@
+    </aside>
+    <!-- END NAVIGATION -->
+    <!-- MAIN PANEL -->
+    <div id="main" role="main">
+
+        <div id="ribbon">
+
+            <span class="ribbon-button-alignment">
+                <span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh" rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings." data-html="true">
+                    <i class="fa fa-refresh"></i>
+                </span>
+            </span>
+        </div>
+
+        @RenderBody()
+    </div>
+
+    <!-- END MAIN PANEL -->
+    <!-- PAGE FOOTER -->
+    @Scripts.Render("~/LayoutScripts")
+    @RenderSection("scripts", required: false)
+
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="~/js/Smart.js"></script>
+</body>
+</html>
